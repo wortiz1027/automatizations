@@ -1,0 +1,29 @@
+# -------------------------------------------------------------------
+# - DOCKER COMPOSE FILE
+# - AUTOR: Equipo 5
+# - FECHA: 03-Octubre-2020
+# - DESCRIPCION: Docker compose file que permite la
+# -              creacion de 2 contendores uno para la aplicacion
+# -              y otro para la base de datos de la app de seguridad
+# -------------------------------------------------------------------
+
+version: '3.7'
+services:
+  db_mongo:
+    image: mongo:latest
+    container_name: db_mongo
+    hostname: db_mongo
+    restart: always
+    ports:
+     - 27017:27017
+  server_rabbitmq:
+    image: rabbitmq:latest
+    container_name: server_rabbitmq
+    hostname: server_rabbitmq
+    restart: always
+    ports:
+     - 5672:5672
+     - 15672:15672
+    environment:
+     - RABBITMQ_DEFAULT_USER=test
+     - RABBITMQ_DEFAULT_PASS=password

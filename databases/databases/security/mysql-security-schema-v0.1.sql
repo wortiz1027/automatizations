@@ -203,7 +203,7 @@ START TRANSACTION;
 USE `securitydb`;
 -- password = Pica2020++ = $2a$10$1JhQJ58EH6CCzVwxCl1vcud5Eo3ivrlyT9hu2z28rbv.CA1yoWI/S
 INSERT INTO `securitydb`.`tbl_sec_users` (`id_user`, `cedula`, `nombres`, `apellidos`, `direccion`, `fecha_nacimiento`, `telefono`, `email`, `username`, `password`, `enable`, `account_non_expired`, `credential_non_expired`, `account_non_locket`)
-VALUES ('6e994309-c372-4670-a317-884af46b36e0', 7946135, 'root', 'admin', 'Calle 123', '1970-11-20', 301638457, 'root@touresbalon.com', 'root', '$2a$10$1JhQJ58EH6CCzVwxCl1vcud5Eo3ivrlyT9hu2z28rbv.CA1yoWI/S', 'true', 'true', 'true', NULL);
+VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', 7946135, 'root', 'admin', 'Calle 123', '1970-11-20', 301638457, 'root@touresbalon.com', 'root', '$2a$10$1JhQJ58EH6CCzVwxCl1vcud5Eo3ivrlyT9hu2z28rbv.CA1yoWI/S', 'true', 'true', 'true', NULL);
 
 COMMIT;
 
@@ -212,10 +212,17 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `securitydb`;
-INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('3e4556fe-05b2-11eb-99e0-4be5cd93732c', 'ROLE_ADMIN');
-INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('3e455870-05b2-11eb-99e1-0bd9d244f320', 'ROLE_USER');
-INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('618bdc1e-05b2-11eb-acd0-67a7ef0f42bc', 'ROLE_CLIENT');
-INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('3e4558ac-05b2-11eb-99e2-affede8f5a15', 'ROLE_GUEST');
+INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('4072b81a-93f5-444a-9836-b52b40df8fea', 'ROLE_ADMIN');
+INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('27c18367-7b7b-4c1f-a81a-37d9066c8a05', 'ROLE_USER');
+INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('a0c955f4-19da-4369-960f-53547f73bc0b', 'ROLE_CLIENT');
+INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('d7511f8a-82dd-4428-857e-5297c6af58f4', 'ROLE_GUEST');
+INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('69ba4917-0a5d-49e1-a04c-831b7c56429b', 'ROLE_PRODUCTOS_CONSULTA');
+INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('effb52b5-b466-4eb2-a57d-43ca445871f7', 'ROLE_PRODUCTOS_ADMON');
+INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('68547678-c6e8-42a4-ac29-a8e332f27872', 'ROLE_CAMPANAS');
+INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('82d4080b-ec0c-4689-a46d-9567468c1a54', 'ROLE_ORDENES_CONSULTA');
+INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('03b81519-10d1-4b2b-b0ab-8bcd75f104dd', 'ROLE_ORDENES_ADMON');
+INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('b457acd8-927a-44cf-b9d7-31787415b5d7', 'ROLE_CLIENTES_CONSULTA');
+INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('510e74f7-b7b8-4ef0-b510-07415486abc3', 'ROLE_CLIENTES_ADMON');
 
 COMMIT;
 
@@ -224,10 +231,17 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `securitydb`;
-INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('6e994309-c372-4670-a317-884af46b36e0', '3e4556fe-05b2-11eb-99e0-4be5cd93732c');
-INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('6e994309-c372-4670-a317-884af46b36e0', '3e455870-05b2-11eb-99e1-0bd9d244f320');
-INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('6e994309-c372-4670-a317-884af46b36e0', '618bdc1e-05b2-11eb-acd0-67a7ef0f42bc');
-INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('6e994309-c372-4670-a317-884af46b36e0', '3e4558ac-05b2-11eb-99e2-affede8f5a15');
+INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', '4072b81a-93f5-444a-9836-b52b40df8fea');
+INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', '27c18367-7b7b-4c1f-a81a-37d9066c8a05');
+INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', 'a0c955f4-19da-4369-960f-53547f73bc0b');
+INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', 'd7511f8a-82dd-4428-857e-5297c6af58f4');
+INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', '69ba4917-0a5d-49e1-a04c-831b7c56429b');
+INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', 'effb52b5-b466-4eb2-a57d-43ca445871f7');
+INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', '68547678-c6e8-42a4-ac29-a8e332f27872');
+INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', '82d4080b-ec0c-4689-a46d-9567468c1a54');
+INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', '03b81519-10d1-4b2b-b0ab-8bcd75f104dd');
+INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', 'b457acd8-927a-44cf-b9d7-31787415b5d7');
+INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', '510e74f7-b7b8-4ef0-b510-07415486abc3');
 
 COMMIT;
 
@@ -236,12 +250,12 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `securitydb`;
--- client_secret = 9430fd38-05b3-11eb-a999-c7e4bb44a691 = $2a$10$ZOrcCjbHPmkMWieuAbRxSevlh5ojSW7WgYacwhl4bSvlfyTatywQK
+-- client_secret = 0b78c28e-6abc-4252-85d1-214da95bc6ca = $2a$10$mTdkD//D6J9KXypMhyMzHOxJ3QRXiLWxj9qpBXGKft/bdhsU760la
 INSERT INTO `securitydb`.`oauth_client_details` (`client_id`, `resource_id`, `client_secret`, `scope`, `authorized_grant_types`, `web_server_redirect_uri`, `authorities`, `access_token_validity`, `refresh_token_validity`, `additional_information`, `autoapprove`)
-VALUES ('5258f2f8-05b3-11eb-96f5-9f4a2df3ac0e', 'oauth/pica', '$2a$10$ZOrcCjbHPmkMWieuAbRxSevlh5ojSW7WgYacwhl4bSvlfyTatywQK', 'read,write', 'password,refresh_token,client_credentials', 'http://localhost:8086/MicroServices/', 'USER', 300, 600, '', 'false');
+VALUES ('89792737-705f-4358-a95b-744962644de4', 'oauth/pica', '$2a$10$mTdkD//D6J9KXypMhyMzHOxJ3QRXiLWxj9qpBXGKft/bdhsU760la', 'read,write', 'password,refresh_token,client_credentials', 'http://localhost:8086/MicroServices/', 'USER', 300, 600, '', 'false');
 
--- client_secret = c5aad3de-05b3-11eb-b5df-37ffdf85ceb0 = $2a$10$ZkiHduuF6fdRwpCSUyY/4um5AawbWC9M2ff4r49GyKr3ARAB1qAQO
+-- client_secret = c56eceb0-88f7-4b41-a495-dc8c92e0f449 = $2a$10$OXEsYNtDpv2hTT9nymtx3ujAC3ItPiItGxSu0kOywn9Canxa6dQeW
 INSERT INTO `securitydb`.`oauth_client_details` (`client_id`, `resource_id`, `client_secret`, `scope`, `authorized_grant_types`, `web_server_redirect_uri`, `authorities`, `access_token_validity`, `refresh_token_validity`, `additional_information`, `autoapprove`)
-VALUES ('c2d81e6e-05b3-11eb-bc37-c39255d6522d', 'oauth/pica', '$2a$10$ZkiHduuF6fdRwpCSUyY/4um5AawbWC9M2ff4r49GyKr3ARAB1qAQO', 'read,write', 'password,refresh_token,client_credentials', 'http://localhost:8086/MicroServices/', 'USER', 300, 600, '', 'false');
+VALUES ('4b4c6d63-0e7e-428b-b139-75e0c02b50f3', 'oauth/pica', '$2a$10$OXEsYNtDpv2hTT9nymtx3ujAC3ItPiItGxSu0kOywn9Canxa6dQeW', 'read,write', 'password,refresh_token,client_credentials', 'http://localhost:8086/MicroServices/', 'USER', 300, 600, '', 'false');
 
 COMMIT;
