@@ -56,7 +56,8 @@ services:
       - JAVA_OPTS=
         -DEUREKA_SERVER=http://discovery-server:9091/eureka
         -DCONFIG_SERVER=http://config-server:9090
-        -DPRODUCTS_URL=http://products-service:8001
+        -DSECURITY_URL=http://security-server:9050
+        -DPRODUCTS_URL=http://products-service:8001        
     depends_on:
       - discovery-server
       - config-server
@@ -69,14 +70,15 @@ services:
     hostname: security-server
     restart: always
     ports:
-      - 9050:9050
+      - 9050
     networks:
-      - ntw_front
       - ntw_cloud
+      - ntw_databases
     environment:
       - JAVA_OPTS=
         -DEUREKA_SERVER=http://discovery-server:9091/eureka
         -DCONFIG_SERVER=http://config-server:9090
+        -DDB_SECURITY_HOST=db_security
     depends_on:
       - discovery-server
       - config-server
@@ -90,4 +92,6 @@ networks:
   ntw_cloud:
     external: true
   ntw_backend:
+    external: true
+  ntw_databases:
     external: true  
