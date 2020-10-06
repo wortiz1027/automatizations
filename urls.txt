@@ -1,0 +1,59 @@
+URL validacion vulnerabilidades dependencias maven
+https://sorenpoulsen.com/using-owasp-dependency-check-with-maven
+
+URLs Spring cloud
+https://medium.com/@migueldoctor
+https://blog.marcosbarbero.com/centralized-authorization-jwt-spring-boot2/ * * * * *
+https://www.javainuse.com/spring/springcloud * * * * *
+https://www.freelancermap.com/blog/es/microservicios-spring-cloud-netflix/ 
+https://developer.okta.com/blog/2018/02/13/secure-spring-microservices-with-oauth
+https://github.com/eugenp/tutorials/tree/master/spring-cloud/spring-cloud-security/auth-resource
+https://github.com/BharatRajMeriyala/SpringCloudSecurity/blob/master/SpringCloudSecurity-Advanced/pom.xml
+https://github.com/Baeldung/spring-security-oauth/blob/master/oauth-jwt/jwt-auth-server/pom.xml
+https://github.com/Baeldung/spring-security-oauth/blob/master/oauth-legacy/oauth-zuul-gateway/pom.xml
+https://github.com/Baeldung/spring-security-oauth/tree/master/oauth-jwt/jwt-auth-server/src/main/resources
+https://picodotdev.github.io/blog-bitix/2019/02/servidor-oauth-gateway-y-servicio-rest-utilizando-tokens-jwt-con-spring/ * * * * *
+https://www.baeldung.com/spring-security-oauth2-jws-jwk
+https://livebook.manning.com/book/spring-security-in-action/chapter-15/v-6/1
+
+URLs gestion de recursos contenedores
+https://nodramadevops.com/2019/10/docker-memory-resource-limits/ * * * * *
+https://www.paradigmadigital.com/dev/como-optimizar-tu-aplicacion-java-en-docker-1-2/ * * * * *
+
+URLs microservicios rabbitmq
+https://github.com/jonashackt/spring-rabbitmq-messaging-microservices * * * * * 
+https://www.javainuse.com/spring/spring-boot-rabbitmq-hello-world
+https://www.devglan.com/spring-boot/springboot-rabbitmq-example
+https://www.oreilly.com/library/view/spring-50-microservices/9781787127685/b704fe73-8abf-4202-a9fe-f74b457a1b74.xhtml
+https://www.youtube.com/watch?v=h8b1dXgPulQ
+https://piotrminkowski.com/tag/rabbitmq/
+
+.net + spring cloud
+https://seroter.com/2017/03/27/yes-you-can-use-a-single-service-registry-for-net-and-java-microservices/
+
+cqrs
+https://github.com/eugenp/tutorials/blob/master/patterns/cqrs-es/src/main/java/com/baeldung/patterns/cqrs/aggregates/UserAggregate.java
+https://blog.nebrass.fr/playing-with-cqrs-and-event-sourcing-in-spring-boot-and-axon/
+https://github.com/nebrass/playing-with-cqrs-and-event-sourcing-in-spring-boot-and-axon/blob/master/pom.xml
+http://www.vinsguru.com/architectural-design-patterns-cqrs-command-and-query-responsibility-segregation-using-spring-boot-postgresql/
+https://hackernoon.com/cqrs-command-query-responsibility-segregation-8vb32x3
+https://github.com/dashsaurabh/event-sourcing-cqrs-axon-spring-boot/blob/master/pom.xml
+https://github.com/benwilcock/cqrs-microservice-sampler/blob/master/command-side/build.gradle
+https://stackoverflow.com/questions/55769877/receive-events-from-amqp-with-axon-4
+https://github.com/dfelski/axon-amqp-example/blob/master/docker-compose.yml
+https://www.kindsonthegenius.com/microservices/complete-cqrs-application-with-axon-framework-1-step-by-step-guide/
+https://github.com/KindsonTheGenius/Ecomm/blob/master/src/main/java/com/example/ecom/query/ProductProjector.java
+https://www.youtube.com/watch?v=A0goyZ9F4bg
+https://www.youtube.com/watch?v=7e5euKxHhTE
+https://www.youtube.com/watch?v=j5EjJH9zO0s&list=PL9l1zUfnZkZl7PEv8955O3Cg018e1qrFV&index=3
+https://www.youtube.com/watch?v=ivtIQ0wc11w&list=PL9l1zUfnZkZkYW2-mL17-Q8z1S3NOB8FW
+https://www.youtube.com/watch?v=o3daX1ZFScQ&list=PL9l1zUfnZkZlr4xzz4pwVTcFqLeaw2SYu
+https://github.com/AxonFramework/AxonFramework/issues/1110
+https://github.com/marinflorin/axon-user/blob/master/src/main/resources/application.yml
+https://github.com/dfelski/axon-amqp-example/tree/master/command-service/src/main/java/peanuts/web * * * *
+https://www.adictosaltrabajo.com/2018/06/20/event-sourcing-para-aplicaciones-escalables/
+https://github.com/kotato/axon-examples/tree/carrito-con-cqrs
+https://docs.axoniq.io/reference-guide/v/3.0/part-iii-infrastructure-components/spring-boot-autoconfiguration * * * * * 
+https://www.youtube.com/watch?v=lBKZOTe9QM4&list=PL4O1nDpoa5KTq5QKX9ueK-0QCJ-6Wm_ma
+https://coderef.com.br/cqrs-e-event-sourcing-com-axon-framework-e-spring-boot-7bd83093782d * * * * *
+https://docs.axoniq.io/reference-guide/v/3.0/part-iii-infrastructure-components/spring-boot-autoconfiguration * * * * *
