@@ -15,16 +15,16 @@ services:
     hostname: server_rabbitmq
     restart: always
     ports:
-     - 5672:5672
-     - 15672:15672
+      - 5672:5672
+      - 15672:15672
     #volumes:
     #    - rabbit-config:/etc/rabbitmq/        
     environment:
-     - RABBITMQ_DEFAULT_USER=admin
-     - RABBITMQ_DEFAULT_PASS=Pica2020++
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=Pica2020++
 volumes:
   rabbit-config:
-  
+
 networks:
   ntw_backend:
     external: true     

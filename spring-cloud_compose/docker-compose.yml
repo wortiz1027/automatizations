@@ -1,5 +1,5 @@
 version: '3.7'
-services:  
+services:
   config-server:
     image: co.edu.javeriana.pica.server/config-server:latest
     container_name: config-server
@@ -28,19 +28,19 @@ services:
     container_name: discovery-server
     hostname: discovery-server
     restart: always
-    networks:      
+    networks:
       - ntw_cloud
       - ntw_backend
     depends_on:
       - config-server
     links:
-      - "config-server:config-server"  
+      - "config-server:config-server"
     ports:
       - 9091
     environment:
       - JAVA_OPTS=
         -DCONFIG_SERVER=http://config-server:9090
-        -Dspring.cloud.config.server.native.searchLocations=/var/config-data  
+        -Dspring.cloud.config.server.native.searchLocations=/var/config-data
   gateway-server:
     image: co.edu.javeriana.pica.server/gateway-server:latest
     container_name: gateway-server
@@ -57,12 +57,12 @@ services:
         -DEUREKA_SERVER=http://discovery-server:9091/eureka
         -DCONFIG_SERVER=http://config-server:9090
         -DSECURITY_URL=http://security-server:9050
-        -DPRODUCTS_URL=http://products-service:8001        
+        -DPRODUCTS_URL=http://products-service:8001
     depends_on:
       - discovery-server
       - config-server
     links:
-      - "discovery-server:discovery-server"  
+      - "discovery-server:discovery-server"
       - "config-server:config-server"
   security-server:
     image: co.edu.javeriana.pica.server/security-server:latest
@@ -83,7 +83,7 @@ services:
       - discovery-server
       - config-server
     links:
-      - "discovery-server:discovery-server"  
+      - "discovery-server:discovery-server"
       - "config-server:config-server"
 
 networks:

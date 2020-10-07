@@ -23,14 +23,58 @@ services:
     ports:
       - '3306:3306'
     volumes:
-      - ./databases/security/mysql-security-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-security-schema-v0.1.sql
+      - ./scripts/security/mysql-security-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-security-schema-v0.1.sql
       - data_security:/var/lib/mysql
     networks:
       - ntw_databases
     healthcheck:
-      test: ["CMD", "mysqladmin" ,"ping https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost"]
+      test: [ "CMD", "mysqladmin" ,"ping https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost" ]
       timeout: 20s
       retries: 10
+  db_product_command:
+    image: mysql:5.7.31
+    container_name: db_product_command
+    hostname: db_product_command
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'mysql'
+      MYSQL_DATABASE: 'productcommanddb'
+      MYSQL_USER: 'product'
+      MYSQL_PASSWORD: 'product2020++'
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - '3301:3301'
+    volumes:
+      - ./scripts/\products/mysql-products-command-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-products-command-schema-v0.1.sql
+      - data_security:/var/lib/mysql
+    networks:
+      - ntw_databases
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10
+  db_product_query:
+    image: mysql:5.7.31
+    container_name: db_product_query
+    hostname: db_product_query
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: 'mysql'
+      MYSQL_DATABASE: 'productquerydb'
+      MYSQL_USER: 'product'
+      MYSQL_PASSWORD: 'product2020++'
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - '3302:3302'
+    volumes:
+      - ./scripts/\products/mysql-products-query-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-products-query-schema-v0.1.sql
+      - data_security:/var/lib/mysql
+    networks:
+      - ntw_databases
+    healthcheck:
+      test: [ "CMD", "mysqladmin" ,"ping https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost" ]
+      timeout: 20s
+      retries: 10    
 volumes:
   data_security:
 networks:

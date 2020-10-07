@@ -38,8 +38,7 @@ docker build --no-cache=true --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%
 docker build --no-cache=true --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') --build-arg BUILD_VERSION=1.0-stable --tag=co.edu.javeriana.pica.server/gateway-server:latest --rm=true server-gateway/
 docker build --no-cache=true --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') --build-arg BUILD_VERSION='1.0-stable' --tag=co.edu.javeriana.pica.server/security-server:latest --rm=true server-security/
 
- docker build --no-cache=true --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') --build-arg BUILD_VERSION=1.0-stable --tag=co.edu.javeriana.pica.services/products-service:latest --rm=true products-service/
-
+docker build --no-cache=true --build-arg BUILD_DATE=$(date -u +'%Y-%m-%dT%H:%M:%SZ') --build-arg BUILD_VERSION=1.0-stable --tag=co.edu.javeriana.pica.services/products-service:latest --rm=true products-service/
 
 # Eliminando imagenes residuales
 echo 'Limpiando imagenes residuales...'

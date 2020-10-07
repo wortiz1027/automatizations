@@ -28,10 +28,21 @@ https://www.oreilly.com/library/view/spring-50-microservices/9781787127685/b704f
 https://www.youtube.com/watch?v=h8b1dXgPulQ
 https://piotrminkowski.com/tag/rabbitmq/
 
-.net + spring cloud
+.NET + SRPING CLOUD
 https://seroter.com/2017/03/27/yes-you-can-use-a-single-service-registry-for-net-and-java-microservices/
 
-cqrs
+.NET + CQRS
+https://awesomeopensource.com/project/kgrzybek/sample-dotnet-core-cqrs-api * * * * *
+https://www.kamilgrzybek.com/design/simple-cqrs-implementation-with-raw-sql-and-ddd/ * * * * *
+https://github.com/kgrzybek/sample-dotnet-core-cqrs-api * * * * * 
+https://github.com/PeterKneale/Europa
+https://medium.com/aspnetrun/microservices-architecture-on-net-3b4865eea03f
+https://dev.to/rwitkowski_asc/building-microservices-on-net-core-47cn
+https://dev.to/rwitkowski_asc/building-microservices-on-net-core-47cn * * * * 
+https://github.com/ddd-cqrs-es/BookLibrary
+https://dev.to/rwitkowski_asc/building-microservices-on-net-core-47cn * * * * *
+
+CQRS
 https://github.com/eugenp/tutorials/blob/master/patterns/cqrs-es/src/main/java/com/baeldung/patterns/cqrs/aggregates/UserAggregate.java
 https://blog.nebrass.fr/playing-with-cqrs-and-event-sourcing-in-spring-boot-and-axon/
 https://github.com/nebrass/playing-with-cqrs-and-event-sourcing-in-spring-boot-and-axon/blob/master/pom.xml
@@ -57,3 +68,4 @@ https://docs.axoniq.io/reference-guide/v/3.0/part-iii-infrastructure-components/
 https://www.youtube.com/watch?v=lBKZOTe9QM4&list=PL4O1nDpoa5KTq5QKX9ueK-0QCJ-6Wm_ma
 https://coderef.com.br/cqrs-e-event-sourcing-com-axon-framework-e-spring-boot-7bd83093782d * * * * *
 https://docs.axoniq.io/reference-guide/v/3.0/part-iii-infrastructure-components/spring-boot-autoconfiguration * * * * *
+http://blog.joedayz.pe/2018/08/introduccion-axon-framework.html * * * * * 
