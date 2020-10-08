@@ -9,28 +9,28 @@
 
 version: '3.7'
 services:
-  db_security:
-    image: mysql:5.7.31
-    container_name: db_security
-    hostname: db_security
-    restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: 'mysql'
-      MYSQL_DATABASE: 'securitydb'
-      MYSQL_USER: 'security'
-      MYSQL_PASSWORD: 'security2020++'
-      MYSQL_ROOT_HOST: '%'
-    ports:
-      - '3306:3306'
-    volumes:
-      - ./scripts/security/mysql-security-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-security-schema-v0.1.sql
-      - data_security:/var/lib/mysql
-    networks:
-      - ntw_databases
-    healthcheck:
-      test: [ "CMD", "mysqladmin" ,"ping https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost" ]
-      timeout: 20s
-      retries: 10
+#  db_security:
+#    image: mysql:5.7.31
+#    container_name: db_security
+#    hostname: db_security
+#    restart: always
+#    environment:
+#      MYSQL_ROOT_PASSWORD: 'mysql'
+#      MYSQL_DATABASE: 'securitydb'
+#      MYSQL_USER: 'security'
+#      MYSQL_PASSWORD: 'security2020++'
+#      MYSQL_ROOT_HOST: '%'
+#    ports:
+#      - '3306:3306'
+#    volumes:
+#      - ./scripts/security/mysql-security-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-security-schema-v0.1.sql
+#      - data_security:/var/lib/mysql
+#    networks:
+#      - ntw_databases
+#    healthcheck:
+#      test: [ "CMD", "mysqladmin" ,"ping https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost" ]
+#      timeout: 20s
+#      retries: 10
   db_product_command:
     image: mysql:5.7.31
     container_name: db_product_command
@@ -43,12 +43,20 @@ services:
       MYSQL_PASSWORD: 'product2020++'
       MYSQL_ROOT_HOST: '%'
     ports:
-      - '3301:3301'
+      - 3301:3306
     volumes:
-      - ./scripts/\products/mysql-products-command-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-products-command-schema-v0.1.sql
-      - data_security:/var/lib/mysql
+      - ./scripts/products/mysql-products-command-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-products-command-schema-v0.1.sql
+      - data_product_command:/var/lib/mysql
     networks:
       - ntw_databases
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 180M
+        reservations:
+          cpus: '0.25'
+          memory: 30M
     healthcheck:
       test: [ "CMD", "mysqladmin" ,"ping https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost" ]
       timeout: 20s
@@ -65,18 +73,28 @@ services:
       MYSQL_PASSWORD: 'product2020++'
       MYSQL_ROOT_HOST: '%'
     ports:
-      - '3302:3302'
+      - 3302:3306
     volumes:
-      - ./scripts/\products/mysql-products-query-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-products-query-schema-v0.1.sql
-      - data_security:/var/lib/mysql
+      - ./scripts/products/mysql-products-query-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-products-query-schema-v0.1.sql
+      - data_product_query:/var/lib/mysql
     networks:
       - ntw_databases
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 180M
+        reservations:
+          cpus: '0.25'
+          memory: 30M
     healthcheck:
       test: [ "CMD", "mysqladmin" ,"ping https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost" ]
       timeout: 20s
       retries: 10    
 volumes:
   data_security:
+  data_product_command:
+  data_product_query:
 networks:
   ntw_databases:
     external: true
