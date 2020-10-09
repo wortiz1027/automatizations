@@ -8,6 +8,13 @@
 # -------------------------------------------------------------------
 
 version: '3.7'
+
+
+x-logging: &logging
+    driver: loki
+    options:
+      loki-url: "http://localhost:3100/loki/api/v1/push"
+
 services:
 #  db_security:
 #    image: mysql:5.7.31
@@ -31,47 +38,20 @@ services:
 #      test: [ "CMD", "mysqladmin" ,"ping https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost" ]
 #      timeout: 20s
 #      retries: 10
-  db_product_command:
-    image: mysql:5.7.31
-    container_name: db_product_command
-    hostname: db_product_command
+
+  db_product_query_2:    
+    image: mysql:5.7.31    
+    container_name: db_product_query_2
+    hostname: db_product_query_2
     restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: 'mysql'
-      MYSQL_DATABASE: 'productcommanddb'
-      MYSQL_USER: 'product'
-      MYSQL_PASSWORD: 'product2020++'
-      MYSQL_ROOT_HOST: '%'
-    ports:
-      - 3301:3306
-    volumes:
-      - ./scripts/products/mysql-products-command-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-products-command-schema-v0.1.sql
-      - data_product_command:/var/lib/mysql
-    networks:
-      - ntw_databases
-    deploy:
-      resources:
-        limits:
-          cpus: '0.50'
-          memory: 180M
-        reservations:
-          cpus: '0.25'
-          memory: 30M
-    healthcheck:
-      test: [ "CMD", "mysqladmin" ,"ping https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost" ]
-      timeout: 20s
-      retries: 10
-  db_product_query:
-    image: mysql:5.7.31
-    container_name: db_product_query
-    hostname: db_product_query
-    restart: always
+    logging: *logging
     environment:
       MYSQL_ROOT_PASSWORD: 'mysql'
       MYSQL_DATABASE: 'productquerydb'
       MYSQL_USER: 'product'
       MYSQL_PASSWORD: 'product2020++'
       MYSQL_ROOT_HOST: '%'
+      FLUENT_BIT_ADDRESS: 'fluent-bit'
     ports:
       - 3302:3306
     volumes:
@@ -79,22 +59,34 @@ services:
       - data_product_query:/var/lib/mysql
     networks:
       - ntw_databases
+      - ntw_logging
     deploy:
       resources:
         limits:
           cpus: '0.50'
           memory: 180M
-        reservations:
-          cpus: '0.25'
-          memory: 30M
+        #reservations:
+        #  cpus: '0.25'
+        #  memory: 30M
     healthcheck:
       test: [ "CMD", "mysqladmin" ,"ping https://linuxize.com/post/how-to-remove-docker-images-containers-volumes-and-networks/", "-h", "localhost" ]
       timeout: 20s
-      retries: 10    
+      retries: 10
+    #logging:
+    #  driver: loki
+    #  options:
+    #    loki-url: http://host.docker.internal:3100/loki/api/v1/push
+    #    loki-pipeline-stages: |
+    #      - regex:
+    #          expression: '(level|lvl|severity)=(?P<level>\w+)'
+    #      - labels:
+    #          level:
 volumes:
   data_security:
   data_product_command:
   data_product_query:
 networks:
   ntw_databases:
+    external: true
+  ntw_logging:
     external: true

@@ -69,6 +69,7 @@ https://www.youtube.com/watch?v=lBKZOTe9QM4&list=PL4O1nDpoa5KTq5QKX9ueK-0QCJ-6Wm
 https://coderef.com.br/cqrs-e-event-sourcing-com-axon-framework-e-spring-boot-7bd83093782d * * * * *
 https://docs.axoniq.io/reference-guide/v/3.0/part-iii-infrastructure-components/spring-boot-autoconfiguration * * * * *
 http://blog.joedayz.pe/2018/08/introduccion-axon-framework.html * * * * * 
+https://www.youtube.com/watch?v=xIoSgDRxhzU * * * * *
 
 LOGS + DOCKER
 https://github.com/thakkaryash94/docker-grafana-loki-fluent-bit-sample/blob/master/docker-compose-app.yml
