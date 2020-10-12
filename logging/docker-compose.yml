@@ -1,16 +1,20 @@
 version: "3"
 
+# docker run -d --name loki --restart unless-stopped -p 3100:3100 --network ntw_logging grafana/loki:latest "-config.file=/etc/loki/local-config.yaml"
+
 services:
-  #loki:
-  #  image: grafana/loki:latest
-  #  container_name: loki
-  #  expose:
-  #    - "3100"
-  #  networks:
-  #    - ntw_logging
+  loki:
+    image: grafana/loki:master
+    container_name: loki
+    expose:
+      - "3100"
+    command: -config.file=/etc/loki/local-config.yaml
+    networks:
+      - ntw_logging
   grafana:
     image: grafana/grafana
     container_name: grafana
+    hostname: grafana
     ports:
       - "3000:3000"
     environment:

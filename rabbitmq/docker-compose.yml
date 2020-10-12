@@ -9,19 +9,24 @@
 
 version: '3.7'
 services:
-  server_rabbitmq:
+  server_events:
     image: rabbitmq:management
-    container_name: server_rabbitmq
-    hostname: server_rabbitmq
+    container_name: server_events
+    hostname: server_events
     restart: always
     ports:
       - 5672:5672
       - 15672:15672
-    #volumes:
-    #    - rabbit-config:/etc/rabbitmq/        
+    networks:
+      - ntw_backend
     environment:
-      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_USER=pica
       - RABBITMQ_DEFAULT_PASS=Pica2020++
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 125M  
 volumes:
   rabbit-config:
 

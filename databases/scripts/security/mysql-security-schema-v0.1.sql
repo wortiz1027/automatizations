@@ -203,7 +203,7 @@ START TRANSACTION;
 USE `securitydb`;
 -- password = Pica2020++ = $2a$10$1JhQJ58EH6CCzVwxCl1vcud5Eo3ivrlyT9hu2z28rbv.CA1yoWI/S
 INSERT INTO `securitydb`.`tbl_sec_users` (`id_user`, `cedula`, `nombres`, `apellidos`, `direccion`, `fecha_nacimiento`, `telefono`, `email`, `username`, `password`, `enable`, `account_non_expired`, `credential_non_expired`, `account_non_locket`)
-VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', 7946135, 'root', 'admin', 'Calle 123', '1970-11-20', 301638457, 'root@touresbalon.com', 'root', '$2a$10$1JhQJ58EH6CCzVwxCl1vcud5Eo3ivrlyT9hu2z28rbv.CA1yoWI/S', 'true', 'true', 'true', NULL);
+VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', 7946135, 'root', 'admin', 'Calle 123', '1970-11-20', 301638457, 'root@touresbalon.com', 'root', '$2a$10$1JhQJ58EH6CCzVwxCl1vcud5Eo3ivrlyT9hu2z28rbv.CA1yoWI/S', 'true', 'true', 'true', 'true');
 
 COMMIT;
 
