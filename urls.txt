@@ -1,7 +1,11 @@
-URL validacion vulnerabilidades dependencias maven
++----------------------------------
+| URL validacion vulnerabilidades dependencias maven
++----------------------------------
 https://sorenpoulsen.com/using-owasp-dependency-check-with-maven
 
-URLs Spring cloud
++----------------------------------
+| URLs Spring cloud
++----------------------------------
 https://medium.com/@migueldoctor
 https://blog.marcosbarbero.com/centralized-authorization-jwt-spring-boot2/ * * * * *
 https://www.javainuse.com/spring/springcloud * * * * *
@@ -16,11 +20,15 @@ https://picodotdev.github.io/blog-bitix/2019/02/servidor-oauth-gateway-y-servici
 https://www.baeldung.com/spring-security-oauth2-jws-jwk
 https://livebook.manning.com/book/spring-security-in-action/chapter-15/v-6/1
 
-URLs gestion de recursos contenedores
++----------------------------------
+| URLs gestion de recursos contenedores
++----------------------------------
 https://nodramadevops.com/2019/10/docker-memory-resource-limits/ * * * * *
 https://www.paradigmadigital.com/dev/como-optimizar-tu-aplicacion-java-en-docker-1-2/ * * * * *
 
-URLs microservicios rabbitmq
++----------------------------------
+| URLs microservicios rabbitmq
++----------------------------------
 https://github.com/jonashackt/spring-rabbitmq-messaging-microservices * * * * * 
 https://www.javainuse.com/spring/spring-boot-rabbitmq-hello-world
 https://www.devglan.com/spring-boot/springboot-rabbitmq-example
@@ -38,7 +46,9 @@ https://stackoverflow.com/questions/51579305/spring-cloud-configuration-client-f
 https://www.bradjolicoeur.com/Article/configserver-for-local-development
 https://github.com/pivotal-cf/spring-cloud-dotnet-configuration/blob/master/nuget.config
 
-.NET + CQRS
++----------------------------------
+| .NET + CQRS
++----------------------------------
 https://awesomeopensource.com/project/kgrzybek/sample-dotnet-core-cqrs-api * * * * *
 https://www.kamilgrzybek.com/design/simple-cqrs-implementation-with-raw-sql-and-ddd/ * * * * *
 https://github.com/kgrzybek/sample-dotnet-core-cqrs-api * * * * * 
@@ -49,7 +59,9 @@ https://dev.to/rwitkowski_asc/building-microservices-on-net-core-47cn * * * *
 https://github.com/ddd-cqrs-es/BookLibrary
 https://dev.to/rwitkowski_asc/building-microservices-on-net-core-47cn * * * * *
 
-CQRS
++----------------------------------
+| CQRS
++----------------------------------
 https://github.com/eugenp/tutorials/blob/master/patterns/cqrs-es/src/main/java/com/baeldung/patterns/cqrs/aggregates/UserAggregate.java
 https://blog.nebrass.fr/playing-with-cqrs-and-event-sourcing-in-spring-boot-and-axon/
 https://github.com/nebrass/playing-with-cqrs-and-event-sourcing-in-spring-boot-and-axon/blob/master/pom.xml
@@ -80,9 +92,17 @@ https://www.youtube.com/watch?v=xIoSgDRxhzU * * * * *
 http://progressivecoder.com/event-sourcing-and-cqrs-with-axon-and-spring-boot-part-2/ * * * * * * * * * * * 
 https://github.com/dashsaurabh/event-sourcing-cqrs-axon-spring-boot  * * * * * * * * * * * 
 
-LOGS + DOCKER
++----------------------------------
+| LOGS + DOCKER
++----------------------------------
 https://github.com/thakkaryash94/docker-grafana-loki-fluent-bit-sample/blob/master/docker-compose-app.yml
 https://dev.to/thakkaryash94/docker-container-logs-using-fluentd-and-grafana-loki-a15
 https://dzone.com/articles/docker-centralized-logging-with-elk-stack
 https://dockstation.io/#screenshots
 https://github.com/portainer/portainer/issues/460 * * * * * 
+
++----------------------------------
+| OPTIMIZAR CONSULTAS EN MYSQL
++----------------------------------
+https://www.bridge-global.com/blog/tips-to-improve-mysql-query-performance/
+https://opensource.com/article/17/5/speed-your-mysql-queries-300-times

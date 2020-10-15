@@ -72,6 +72,20 @@ services:
       MYSQL_USER: 'product'
       MYSQL_PASSWORD: 'product2020++'
       MYSQL_ROOT_HOST: '%'
+    command:
+        - mysqld
+        - --default_storage_engine=InnoDB
+        - --character-set-server=utf8
+        - --init-connect=SET NAMES utf8
+        - --innodb_log_file_size=256M
+        - --max_allowed_packet=20M
+        - --bulk_insert_buffer_size=20M
+        - --query_cache_size=50M
+        - --query_cache_type=1
+        - --query_cache_limit=256k
+        - --skip-character-set-client-handshake
+        - --skip-host-cache
+        - --wait_timeout=600
     ports:
       - 3302:3306
     volumes:

@@ -26,7 +26,7 @@ services:
       resources:
         limits:
           cpus: '0.50'
-          memory: 125M  
+          memory: 300M  
 volumes:
   rabbit-config:
 
