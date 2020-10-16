@@ -58,8 +58,7 @@ services:
       resources:
         limits:
           cpus: '0.50'
-          memory: 180M
- 
+          memory: 180M 
   db_product_query:    
     image: mysql:5.7.31    
     container_name: db_product_query
@@ -98,11 +97,77 @@ services:
       resources:
         limits:
           cpus: '0.50'
-          memory: 180M    
+          memory: 180M  
+  db_image_command:    
+    image: mysql:5.7.31    
+    container_name: db_image_command
+    hostname: db_image_command
+    restart: always
+    #logging: *logging
+    environment:
+      MYSQL_ROOT_PASSWORD: 'mysql'
+      MYSQL_DATABASE: 'imagescommandb'
+      MYSQL_USER: 'image'
+      MYSQL_PASSWORD: 'image2020++'
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - 3303:3306
+    volumes:
+      - ./scripts/images/command/mysql-images-command-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-images-command-schema-v0.1.sql
+      - data_images_command:/var/lib/mysql
+    networks:
+      - ntw_databases
+      #- ntw_logging
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 180M
+  db_image_query:    
+    image: mysql:5.7.31    
+    container_name: db_image_query
+    hostname: db_image_query
+    restart: always
+    #logging: *logging
+    environment:
+      MYSQL_ROOT_PASSWORD: 'mysql'
+      MYSQL_DATABASE: 'imagesquerydb'
+      MYSQL_USER: 'image'
+      MYSQL_PASSWORD: 'image2020++'
+      MYSQL_ROOT_HOST: '%'
+    command:
+        - mysqld
+        - --default_storage_engine=InnoDB
+        - --character-set-server=utf8
+        - --init-connect=SET NAMES utf8
+        - --innodb_log_file_size=256M
+        - --max_allowed_packet=20M
+        - --bulk_insert_buffer_size=20M
+        - --query_cache_size=50M
+        - --query_cache_type=1
+        - --query_cache_limit=256k
+        - --skip-character-set-client-handshake
+        - --skip-host-cache
+        - --wait_timeout=600
+    ports:
+      - 3304:3306
+    volumes:
+      - ./scripts/images/query/mysql-images-query-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-images-query-schema-v0.1.sql
+      - data_images_query:/var/lib/mysql
+    networks:
+      - ntw_databases
+      #- ntw_logging
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 180M  
 volumes:
   data_security:
   data_product_command:
   data_product_query:
+  data_images_command:
+  data_images_query:
 networks:
   ntw_databases:
     external: true
