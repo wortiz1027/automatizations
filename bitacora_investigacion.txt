@@ -116,6 +116,17 @@ https://dzone.com/articles/java-springboot-rest-api-to-uploaddownload-file-on
 +----------------------------------
 | COMUNICACION ENTRE MICROS RPC
 +----------------------------------
-https://programmaticponderings.com/2017/05/08/decoupling-microservices-using-message-based-rpc-ipc-with-spring-rabbitmq-and-ampq/
-https://github.com/altfatterz/async-rabbit-template/
+https://reflectoring.io/amqp-request-response/ * * * * * 
+https://programmaticponderings.com/2017/05/08/decoupling-microservices-using-message-based-rpc-ipc-with-spring-rabbitmq-and-ampq/ * * * * 
+https://github.com/altfatterz/async-rabbit-template/ * * * * *
 https://zoltanaltfatter.com/2016/09/26/async-rabbit-template-with-spring-boot/
+
++----------------------------------
+| COSUMIR SERVICIO WEB SOAP
++----------------------------------
+https://www.baeldung.com/spring-soap-web-service * * * * * 
+https://github.com/eugenp/tutorials/tree/master/spring-soap * * * * *
+https://spring.io/guides/gs/consuming-web-service/
+https://medium.com/swlh/consume-soap-web-services-with-spring-boot-4ea8e1ad7b16
+https://howtodoinjava.com/spring-boot/spring-soap-client-webservicetemplate/
+https://memorynotfound.com/spring-ws-consume-soap-service-wsdl/
