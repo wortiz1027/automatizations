@@ -39,7 +39,9 @@ https://www.adictosaltrabajo.com/2015/10/15/integracion-de-rabbitmq-con-spring/
 https://dzone.com/articles/rabbitmq-and-spring-boot-integration-with-fault-to
 https://medium.com/@gourshubham1995/integrating-rabbitmq-with-springboot-application-sender-part-9d0dbd79c707
 
-.NET + SRPING CLOUD
++----------------------------------
+| .NET + SPRING CLOUD
++----------------------------------
 https://seroter.com/2017/03/27/yes-you-can-use-a-single-service-registry-for-net-and-java-microservices/
 https://ronaldwildenberg.com/programming/steeltoe/2018/02/04/centralized-config-for-dotnet-core-with-spring-cloud-config-server.html
 https://stackoverflow.com/questions/51579305/spring-cloud-configuration-client-for-dotnet-c
@@ -130,3 +132,81 @@ https://spring.io/guides/gs/consuming-web-service/
 https://medium.com/swlh/consume-soap-web-services-with-spring-boot-4ea8e1ad7b16
 https://howtodoinjava.com/spring-boot/spring-soap-client-webservicetemplate/
 https://memorynotfound.com/spring-ws-consume-soap-service-wsdl/
+
++----------------------------------
+| DOCKER + SQL SERVER
++----------------------------------
+https://dbafromthecold.com/2020/07/17/sql-server-and-docker-compose/
+https://cardano.github.io/blog/2017/11/15/mssql-docker-container
+
++----------------------------------
+| .NET CORE API CRUD SQL SERVER
++----------------------------------
+https://medium.com/@emekadc/how-to-implement-one-to-one-one-to-many-and-many-to-many-relationships-when-designing-a-database-9da2de684710
+https://www.dataaccess.com/blog/systems-environments/sharing-sql-server-databases-via-scripting-1336#:~:text=Generate%20a%20Script%20in%20the%20SQL%20Server%20Management%20Studio&text=Expand%20Databases,and%20all%20database%20objects%27%20selected
+https://www.mssqltips.com/sqlservertip/6200/sql-server-create-database-examples/
+https://www.sqlservertutorial.net/sql-server-basics/
+https://www.sqlservertutorial.net/sql-server-basics/sql-server-drop-database/
+https://www.sqlservertutorial.net/sql-server-basics/sql-server-create-table/
+https://www.google.com/search?sxsrf=ALeKk00W2oSCRs9vpWsjXRSdjBkodQDXag%3A1603198489320&ei=Gd6OX4aPE5Ku5wK-kI4o&q=.net+core+3.1+api+crud+sql+server&oq=.net+core+3.1+api+crud+sql+server&gs_lcp=CgZwc3ktYWIQAzoECAAQRzoHCCMQsAIQJ1CRgwpYzoYKYKqKCmgAcAJ4AIABrwGIAfAEkgEDMC40mAEAoAEBqgEHZ3dzLXdpesgBCMABAQ&sclient=psy-ab&ved=0ahUKEwjG_9bjm8PsAhUS11kKHT6IAwUQ4dUDCA0&uact=5
+https://www.syncfusion.com/blogs/post/build-crud-application-with-asp-net-core-entity-framework-visual-studio-2019.aspx
+https://www.syncfusion.com/blogs/post/how-to-build-crud-rest-apis-with-asp-net-core-3-1-and-entity-framework-core-create-jwt-tokens-and-secure-apis.aspx
+https://www.luisbeltran.mx/2018/10/08/creando-un-webapi-con-asp-net-core-entity-framework-core-automapper-y-publicacion-en-iis/
+
+
++----------------------------------
+| BASE DE DATOS PAISES/CIUDADES
++----------------------------------
+http://www.geodatasource.com/world-cities-database/free
+
+--------------------------------------------------------------------
+
++------------------------------------------
+| TUTOS CREAR LOAD BALANCER
++------------------------------------------
+
+https://www.youtube.com/watch?v=gKKl6hHLx-U
+https://www.youtube.com/watch?v=xJ7BKnZbwCU
+
++------------------------------------------
+| COMANDOS POST INSTALACION UBUNTU SERVER
++------------------------------------------
+
+25.8.47.1 mincho
+
+sudo apt install net-tools
+sudo iptables -A INPUT -p tcp --dport 8080 -j ACCEPT
+sudo iptables -A INPUT -p tcp --dport 80 -j ACCEPT
+
+sudo apt-get install neofetch
+sudo apt-get install openjdk-11-jre-headless
+sudo apt-get install maven
+
+git clone https://gitlab.com/wortiz1027/load-balancer.git
+cd load-balancer/
+
+update-alternatives --list javacleaer
+
+export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-amd64/
+
+mvn spring-boot:run
+
+Neojaverianos
+
+wget https://www.vpn.net/installers/logmein-hamachi_2.1.0.203-1_amd64.debsudo 
+chmod +x logmein-hamachi_2.1.0.203-1_amd64.deb
+sudo dpkg -i logmein-hamachi_2.1.0.203-1_amd64.deb
+sudo hamachi login
+sudo hamachi attach <correo cuenta logmein>
+sudo hamachi join Semestre2UJC
+
+25.7.212.63
+
+shutdown -h now
+
++----------------------------------
+| INSTALAR HAMACHI EN LINUX
++----------------------------------
+
+https://www.vpn.net/linux
+https://support.logmeininc.com/es/central/help/como-instalar-el-cliente-en-un-ordenador-local-central-t-hamachi-add-attached-local

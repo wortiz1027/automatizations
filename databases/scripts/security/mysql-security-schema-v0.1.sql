@@ -29,27 +29,44 @@ DROP TABLE IF EXISTS `securitydb`.`tbl_sec_users` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `securitydb`.`tbl_sec_users` (
-  `id_user` VARCHAR(255) NOT NULL,
-  `cedula` BIGINT(255) NOT NULL,
-  `nombres` VARCHAR(100) NOT NULL,
-  `apellidos` VARCHAR(100) NOT NULL,
-  `direccion` VARCHAR(255) NOT NULL,
-  `fecha_nacimiento` DATETIME NOT NULL,
-  `telefono` BIGINT(255) NOT NULL,
-  `email` VARCHAR(512) NOT NULL,
-  `username` VARCHAR(100) NOT NULL,
-  `password` VARCHAR(512) NOT NULL,
-  `enable` VARCHAR(45) NULL,
-  `account_non_expired` VARCHAR(45) NULL,
-  `credential_non_expired` VARCHAR(45) NULL,
-  `account_non_locket` VARCHAR(45) NULL,
-  PRIMARY KEY (`id_user`))
-ENGINE = InnoDB;
+	`id_user`   BIGINT(255) NOT NULL AUTO_INCREMENT,
+	`cedula`    BIGINT(255) NOT NULL,
+	`nombres`   VARCHAR(100) NOT NULL,
+	`apellidos` VARCHAR(100) NOT NULL,
+	`direccion` VARCHAR(255) NOT NULL,
+	`fecha_nacimiento` DATETIME NOT NULL,
+	`telefono`  BIGINT(255) NOT NULL,
+	`email`     VARCHAR(512) NOT NULL,
+	`username`  VARCHAR(100) NOT NULL,
+	`password`  VARCHAR(512) NOT NULL,
+	`user_type` BIGINT(255),
+	`enable`    VARCHAR(45) NULL,
+	`account_non_expired`    VARCHAR(45) NULL,
+	`credential_non_expired` VARCHAR(45) NULL,
+	`account_non_locket`     VARCHAR(45) NULL,
+	PRIMARY KEY (`id_user`))
+    ENGINE = InnoDB;
 
 SHOW WARNINGS;
 CREATE UNIQUE INDEX `cedula_UNIQUE` ON `securitydb`.`tbl_sec_users` (`cedula` ASC);
 
 SHOW WARNINGS;
+
+-- -----------------------------------------------------
+-- Table `securitydb`.`tbl_user_type`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `securitydb`.`tbl_user_type` ;
+
+SHOW WARNINGS;
+CREATE TABLE IF NOT EXISTS `securitydb`.`tbl_user_type` (
+	`type_id`   BIGINT(255)  PRIMARY KEY NOT NULL AUTO_INCREMENT,
+	`type_code` VARCHAR(100) NOT NULL,
+	`type_desc` VARCHAR(512) NOT NULL
+) ENGINE = InnoDB;
+
+-- ALTER TABLE `securitydb`.`tbl_user_type` ADD CONSTRAINT PK_TYPE_USER PRIMARY KEY (type_id);
+CREATE UNIQUE INDEX `TYPE_CODE_UNIQUE` ON `securitydb`.`tbl_user_type` (`type_code` ASC);
+ALTER TABLE `securitydb`.`tbl_sec_users` ADD CONSTRAINT FK_USR_TYPE FOREIGN KEY (user_type) REFERENCES `securitydb`.`tbl_user_type` (type_id);
 
 -- -----------------------------------------------------
 -- Table `securitydb`.`tbl_sec_roles`
@@ -58,10 +75,10 @@ DROP TABLE IF EXISTS `securitydb`.`tbl_sec_roles` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `securitydb`.`tbl_sec_roles` (
-  `id_role` VARCHAR(255) NOT NULL,
-  `role` VARCHAR(100) NULL,
-  PRIMARY KEY (`id_role`))
-ENGINE = InnoDB;
+	`id_role` BIGINT(255) NOT NULL AUTO_INCREMENT,
+	`role`    VARCHAR(100) NULL,
+	PRIMARY KEY (`id_role`))
+    ENGINE = InnoDB;
 
 SHOW WARNINGS;
 
@@ -72,20 +89,20 @@ DROP TABLE IF EXISTS `securitydb`.`tbl_sec_user_roles` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `securitydb`.`tbl_sec_user_roles` (
-  `user_id` VARCHAR(255) NOT NULL,
-  `role_id` VARCHAR(255) NOT NULL,
-  PRIMARY KEY (`user_id`, `role_id`),
-  CONSTRAINT `fk_roles`
-    FOREIGN KEY (`role_id`)
-    REFERENCES `securitydb`.`tbl_sec_roles` (`id_role`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_users`
-    FOREIGN KEY (`user_id`)
-    REFERENCES `securitydb`.`tbl_sec_users` (`id_user`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+	 `user_id` BIGINT(255) NOT NULL,
+	 `role_id` BIGINT(255) NOT NULL,
+	 PRIMARY KEY (`user_id`, `role_id`),
+	 CONSTRAINT `fk_roles`
+		 FOREIGN KEY (`role_id`)
+			 REFERENCES `securitydb`.`tbl_sec_roles` (`id_role`)
+			 ON DELETE NO ACTION
+			 ON UPDATE NO ACTION,
+	 CONSTRAINT `fk_users`
+		 FOREIGN KEY (`user_id`)
+			 REFERENCES `securitydb`.`tbl_sec_users` (`id_user`)
+			 ON DELETE NO ACTION
+			 ON UPDATE NO ACTION)
+    ENGINE = InnoDB;
 
 SHOW WARNINGS;
 
@@ -96,19 +113,19 @@ DROP TABLE IF EXISTS `securitydb`.`oauth_client_details` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `securitydb`.`oauth_client_details` (
-  `client_id` VARCHAR(255) NOT NULL,
-  `resource_id` VARCHAR(255) NOT NULL,
-  `client_secret` VARCHAR(255) NOT NULL,
-  `scope` VARCHAR(255) NULL,
-  `authorized_grant_types` VARCHAR(255) NULL,
-  `web_server_redirect_uri` VARCHAR(255) NULL,
-  `authorities` VARCHAR(255) NULL,
-  `access_token_validity` BIGINT(10) NULL,
-  `refresh_token_validity` BIGINT(10) NULL,
-  `additional_information` VARCHAR(4096) NULL,
-  `autoapprove` VARCHAR(255) NULL,
-  PRIMARY KEY (`client_id`))
-ENGINE = InnoDB;
+   `client_id` VARCHAR(255) NOT NULL,
+   `resource_id` VARCHAR(255) NOT NULL,
+   `client_secret` VARCHAR(255) NOT NULL,
+   `scope` VARCHAR(255) NULL,
+   `authorized_grant_types` VARCHAR(255) NULL,
+   `web_server_redirect_uri` VARCHAR(255) NULL,
+   `authorities` VARCHAR(255) NULL,
+   `access_token_validity` BIGINT(10) NULL,
+   `refresh_token_validity` BIGINT(10) NULL,
+   `additional_information` VARCHAR(4096) NULL,
+   `autoapprove` VARCHAR(255) NULL,
+   PRIMARY KEY (`client_id`))
+    ENGINE = InnoDB;
 
 SHOW WARNINGS;
 
@@ -119,13 +136,13 @@ DROP TABLE IF EXISTS `securitydb`.`oauth_client_token` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `securitydb`.`oauth_client_token` (
-  `token_id` VARCHAR(255) NOT NULL,
-  `token` BLOB NULL,
-  `authentication_id` VARCHAR(255) NULL,
-  `user_name` VARCHAR(255) NULL,
-  `client_id` VARCHAR(255) NULL,
-  PRIMARY KEY (`token_id`))
-ENGINE = InnoDB;
+ `token_id` VARCHAR(255) NOT NULL,
+ `token` BLOB NULL,
+ `authentication_id` VARCHAR(255) NULL,
+ `user_name` VARCHAR(255) NULL,
+ `client_id` VARCHAR(255) NULL,
+ PRIMARY KEY (`token_id`))
+    ENGINE = InnoDB;
 
 SHOW WARNINGS;
 
@@ -136,15 +153,15 @@ DROP TABLE IF EXISTS `securitydb`.`oauth_access_token` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `securitydb`.`oauth_access_token` (
-  `token_id` VARCHAR(255) NULL,
-  `token` BLOB NULL,
-  `authentication_id` VARCHAR(255) NULL,
-  `user_name` VARCHAR(255) NULL,
-  `client_id` VARCHAR(255) NULL,
-  `oauth_access_tokencol` VARCHAR(255) NULL,
-  `authentication` BLOB NULL,
-  `refresh_token` VARCHAR(255) NULL)
-ENGINE = InnoDB;
+ `token_id` VARCHAR(255) NULL,
+ `token` BLOB NULL,
+ `authentication_id` VARCHAR(255) NULL,
+ `user_name` VARCHAR(255) NULL,
+ `client_id` VARCHAR(255) NULL,
+ `oauth_access_tokencol` VARCHAR(255) NULL,
+ `authentication` BLOB NULL,
+ `refresh_token` VARCHAR(255) NULL)
+    ENGINE = InnoDB;
 
 SHOW WARNINGS;
 
@@ -158,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `securitydb`.`oauth_refresh_token` (
   `token_id` VARCHAR(255) NULL,
   `token` BLOB NULL,
   `authentication` BLOB NULL)
-ENGINE = InnoDB;
+    ENGINE = InnoDB;
 
 SHOW WARNINGS;
 
@@ -169,9 +186,9 @@ DROP TABLE IF EXISTS `securitydb`.`oauth_code` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `securitydb`.`oauth_code` (
-  `code` VARCHAR(255) NULL,
-  `authentication` BLOB NULL)
-ENGINE = InnoDB;
+ `code` VARCHAR(255) NULL,
+ `authentication` BLOB NULL)
+    ENGINE = InnoDB;
 
 SHOW WARNINGS;
 
@@ -182,13 +199,13 @@ DROP TABLE IF EXISTS `securitydb`.`oauth_approval` ;
 
 SHOW WARNINGS;
 CREATE TABLE IF NOT EXISTS `securitydb`.`oauth_approval` (
-  `user_id` VARCHAR(255) NULL,
-  `client_id` VARCHAR(255) NULL,
-  `scope` VARCHAR(255) NULL,
-  `status` VARCHAR(10) NULL,
-  `expired_at` DATE NULL,
-  `last_modified_at` DATE NULL)
-ENGINE = InnoDB;
+ `user_id` VARCHAR(255) NULL,
+ `client_id` VARCHAR(255) NULL,
+ `scope` VARCHAR(255) NULL,
+ `status` VARCHAR(10) NULL,
+ `expired_at` DATE NULL,
+ `last_modified_at` DATE NULL)
+    ENGINE = InnoDB;
 
 SHOW WARNINGS;
 
@@ -197,13 +214,20 @@ SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
 -- -----------------------------------------------------
+-- Data for table `securitydb`.`tbl_user_type`
+-- -----------------------------------------------------
+INSERT INTO `securitydb`.`tbl_user_type` VALUES (1, 'PLT', 'Platino');
+INSERT INTO `securitydb`.`tbl_user_type` VALUES (2, 'DRD', 'Dorado');
+INSERT INTO `securitydb`.`tbl_user_type` VALUES (3, 'PLO', 'Plateado');
+
+-- -----------------------------------------------------
 -- Data for table `securitydb`.`tbl_sec_users`
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `securitydb`;
 -- password = Pica2020++ = $2a$10$1JhQJ58EH6CCzVwxCl1vcud5Eo3ivrlyT9hu2z28rbv.CA1yoWI/S
-INSERT INTO `securitydb`.`tbl_sec_users` (`id_user`, `cedula`, `nombres`, `apellidos`, `direccion`, `fecha_nacimiento`, `telefono`, `email`, `username`, `password`, `enable`, `account_non_expired`, `credential_non_expired`, `account_non_locket`)
-VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', 7946135, 'root', 'admin', 'Calle 123', '1970-11-20', 301638457, 'root@touresbalon.com', 'root', '$2a$10$1JhQJ58EH6CCzVwxCl1vcud5Eo3ivrlyT9hu2z28rbv.CA1yoWI/S', 'true', 'true', 'true', 'true');
+INSERT INTO `securitydb`.`tbl_sec_users` (`id_user`, `cedula`, `nombres`, `apellidos`, `direccion`, `fecha_nacimiento`, `telefono`, `email`, `username`, `password`, user_type, `enable`, `account_non_expired`, `credential_non_expired`, `account_non_locket`)
+VALUES (1, 7946135, 'root', 'admin', 'Calle 123', '1970-11-20', 301638457, 'root@touresbalon.com', 'root', '$2a$10$1JhQJ58EH6CCzVwxCl1vcud5Eo3ivrlyT9hu2z28rbv.CA1yoWI/S', 1, 'true', 'true', 'true', 'true');
 
 COMMIT;
 
@@ -212,17 +236,17 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `securitydb`;
-INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('4072b81a-93f5-444a-9836-b52b40df8fea', 'ROLE_ADMIN');
-INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('27c18367-7b7b-4c1f-a81a-37d9066c8a05', 'ROLE_USER');
-INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('a0c955f4-19da-4369-960f-53547f73bc0b', 'ROLE_CLIENT');
-INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('d7511f8a-82dd-4428-857e-5297c6af58f4', 'ROLE_GUEST');
-INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('69ba4917-0a5d-49e1-a04c-831b7c56429b', 'ROLE_PRODUCTOS_CONSULTA');
-INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('effb52b5-b466-4eb2-a57d-43ca445871f7', 'ROLE_PRODUCTOS_ADMON');
-INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('68547678-c6e8-42a4-ac29-a8e332f27872', 'ROLE_CAMPANAS');
-INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('82d4080b-ec0c-4689-a46d-9567468c1a54', 'ROLE_ORDENES_CONSULTA');
-INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('03b81519-10d1-4b2b-b0ab-8bcd75f104dd', 'ROLE_ORDENES_ADMON');
-INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('b457acd8-927a-44cf-b9d7-31787415b5d7', 'ROLE_CLIENTES_CONSULTA');
-INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES ('510e74f7-b7b8-4ef0-b510-07415486abc3', 'ROLE_CLIENTES_ADMON');
+INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES (1, 'ROLE_ADMIN');
+INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES (2, 'ROLE_USER');
+INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES (3, 'ROLE_CLIENT');
+INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES (4, 'ROLE_GUEST');
+INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES (5, 'ROLE_PRODUCTOS_CONSULTA');
+INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES (6, 'ROLE_PRODUCTOS_ADMON');
+INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES (7, 'ROLE_CAMPANAS');
+INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES (8, 'ROLE_ORDENES_CONSULTA');
+INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES (9, 'ROLE_ORDENES_ADMON');
+INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES (10, 'ROLE_CLIENTES_CONSULTA');
+INSERT INTO `securitydb`.`tbl_sec_roles` (`id_role`, `role`) VALUES (11, 'ROLE_CLIENTES_ADMON');
 
 COMMIT;
 
@@ -231,17 +255,17 @@ COMMIT;
 -- -----------------------------------------------------
 START TRANSACTION;
 USE `securitydb`;
-INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', '4072b81a-93f5-444a-9836-b52b40df8fea');
-INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', '27c18367-7b7b-4c1f-a81a-37d9066c8a05');
-INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', 'a0c955f4-19da-4369-960f-53547f73bc0b');
-INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', 'd7511f8a-82dd-4428-857e-5297c6af58f4');
-INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', '69ba4917-0a5d-49e1-a04c-831b7c56429b');
-INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', 'effb52b5-b466-4eb2-a57d-43ca445871f7');
-INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', '68547678-c6e8-42a4-ac29-a8e332f27872');
-INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', '82d4080b-ec0c-4689-a46d-9567468c1a54');
-INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', '03b81519-10d1-4b2b-b0ab-8bcd75f104dd');
-INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', 'b457acd8-927a-44cf-b9d7-31787415b5d7');
-INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES ('d4f92a05-f414-4477-b19e-7f8bdef86917', '510e74f7-b7b8-4ef0-b510-07415486abc3');
+INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES (1, 1);
+INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES (1, 2);
+INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES (1, 3);
+INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES (1, 4);
+INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES (1, 5);
+INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES (1, 6);
+INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES (1, 7);
+INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES (1, 8);
+INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES (1, 9);
+INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES (1, 10);
+INSERT INTO `securitydb`.`tbl_sec_user_roles` (`user_id`, `role_id`) VALUES (1, 11);
 
 COMMIT;
 
