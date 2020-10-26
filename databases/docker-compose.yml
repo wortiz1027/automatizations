@@ -162,6 +162,31 @@ services:
         limits:
           cpus: '0.50'
           memory: 180M
+  db_campaigns_command:    
+    image: mysql:5.7.31    
+    container_name: db_campaigns_command
+    hostname: db_campaigns_command
+    restart: always
+    #logging: *logging
+    environment:
+      MYSQL_ROOT_PASSWORD: 'mysql'
+      MYSQL_DATABASE: 'campaignscommanddb'
+      MYSQL_USER: 'campaign'
+      MYSQL_PASSWORD: 'campaign2020++'
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - 3305:3306
+    volumes:
+      - ./scripts/campaigns/command/mysql-campaigns-command-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-campaigns-command-schema-v0.1.sql
+      - data_campaigns_command:/var/lib/mysql
+    networks:
+      - ntw_databases
+      #- ntw_logging
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 180M            
 #  db_provider_command:
     #image: mcr.microsoft.com/mssql/server:2019-CU8-ubuntu-16.04
 #    image: mcr.microsoft.com/mssql/server:2017-CU21-ubuntu-16.04
@@ -199,6 +224,7 @@ volumes:
   data_product_query:
   data_images_command:
   data_images_query:
+  data_campaigns_command:
   data_sql_cmd_system:
   data_sql_cmd_data:
   data_sql_cmd_log:
