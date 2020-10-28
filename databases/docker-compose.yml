@@ -186,7 +186,46 @@ services:
       resources:
         limits:
           cpus: '0.50'
-          memory: 180M            
+          memory: 180M
+  db_campaigns_query:    
+    image: mysql:5.7.31    
+    container_name: db_campaigns_query
+    hostname: db_campaigns_query
+    restart: always
+    #logging: *logging
+    environment:
+      MYSQL_ROOT_PASSWORD: 'mysql'
+      MYSQL_DATABASE: 'campaignsquerydb'
+      MYSQL_USER: 'campaign'
+      MYSQL_PASSWORD: 'campaign2020++'
+      MYSQL_ROOT_HOST: '%'
+    command:
+        - mysqld
+        - --default_storage_engine=InnoDB
+        - --character-set-server=utf8
+        - --init-connect=SET NAMES utf8
+        - --innodb_log_file_size=256M
+        - --max_allowed_packet=20M
+        - --bulk_insert_buffer_size=20M
+        - --query_cache_size=50M
+        - --query_cache_type=1
+        - --query_cache_limit=256k
+        - --skip-character-set-client-handshake
+        - --skip-host-cache
+        - --wait_timeout=600
+    ports:
+      - 3307:3306
+    volumes:
+      - ./scripts/campaigns/query/mysql-campaigns-query-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-campaigns-query-schema-v0.1.sql
+      - data_campaigns_query:/var/lib/mysql
+    networks:
+      - ntw_databases
+      #- ntw_logging
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 180M
 #  db_provider_command:
     #image: mcr.microsoft.com/mssql/server:2019-CU8-ubuntu-16.04
 #    image: mcr.microsoft.com/mssql/server:2017-CU21-ubuntu-16.04
@@ -225,6 +264,7 @@ volumes:
   data_images_command:
   data_images_query:
   data_campaigns_command:
+  data_campaigns_query:
   data_sql_cmd_system:
   data_sql_cmd_data:
   data_sql_cmd_log:

@@ -153,11 +153,25 @@ https://www.syncfusion.com/blogs/post/build-crud-application-with-asp-net-core-e
 https://www.syncfusion.com/blogs/post/how-to-build-crud-rest-apis-with-asp-net-core-3-1-and-entity-framework-core-create-jwt-tokens-and-secure-apis.aspx
 https://www.luisbeltran.mx/2018/10/08/creando-un-webapi-con-asp-net-core-entity-framework-core-automapper-y-publicacion-en-iis/
 
++----------------------------------
+| PAGINACION BASE DE DATOS
++----------------------------------
+https://javabydeveloper.com/spring-jdbctemplate-pagination-examples/
+https://github.com/javabydeveloper/spring-boot/blob/master/spring-boot-jdbc-example/src/main/java/com/javabydeveloper/template/UserJdbcTemplate.java
+https://javabydeveloper.com/spring-data-jdbc-pagination-and-sorting-example/
 
 +----------------------------------
 | BASE DE DATOS PAISES/CIUDADES
 +----------------------------------
 http://www.geodatasource.com/world-cities-database/free
+
++----------------------------------
+| SPRING BOOT + GRAFANA
++----------------------------------
+https://www.callicoder.com/spring-boot-actuator/
+https://www.callicoder.com/spring-boot-actuator-metrics-monitoring-dashboard-prometheus-grafana/
+https://stackabuse.com/monitoring-spring-boot-apps-with-micrometer-prometheus-and-grafana/
+https://medium.com/@gopalkrushnapattanaik/monitoring-spring-boot-services-using-micrometer-prometheus-grafana-30106774372d
 
 --------------------------------------------------------------------
 
@@ -210,3 +224,11 @@ shutdown -h now
 
 https://www.vpn.net/linux
 https://support.logmeininc.com/es/central/help/como-instalar-el-cliente-en-un-ordenador-local-central-t-hamachi-add-attached-local
+
+-----------------------------------
+http://localhost:9050/oauth/token
+username: root
+password: Pica2020++
+clientId: 89792737-705f-4358-a95b-744962644de4
+clientSecret: 0b78c28e-6abc-4252-85d1-214da95bc6ca
+scope: read write
