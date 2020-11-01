@@ -162,43 +162,175 @@ services:
         limits:
           cpus: '0.50'
           memory: 180M
-  db_provider_command:
-    #image: mcr.microsoft.com/mssql/server:2019-CU8-ubuntu-16.04
-    image: mcr.microsoft.com/mssql/server:2017-CU21-ubuntu-16.04
-    #build: ./mssql
-    container_name: db_provider_command
-    hostname: db_provider_command
+  db_campaigns_command:    
+    image: mysql:5.7.31    
+    container_name: db_campaigns_command
+    hostname: db_campaigns_command
     restart: always
     #logging: *logging
     environment:
-      SA_PASSWORD: "provider2020++"
-      ACCEPT_EULA: "Y"
-      MSSQL_AGENT_ENABLED: "true"
+      MYSQL_ROOT_PASSWORD: 'mysql'
+      MYSQL_DATABASE: 'campaignscommanddb'
+      MYSQL_USER: 'campaign'
+      MYSQL_PASSWORD: 'campaign2020++'
+      MYSQL_ROOT_HOST: '%'
     ports:
-      - 1433:1433
+      - 3305:3306
     volumes:
-      - data_sql_cmd_system:/var/opt/mssql/
-      - data_sql_cmd_data:/var/opt/sqlserver/data
-      - data_sql_cmd_log:/var/opt/sqlserver/log
-      - data_sql_cmd_backup:/var/opt/sqlserver/backup
-      - ./mssql/entrypoint.sh:/usr/src/app/entrypoint.sh
-      - ./scripts/providers/command/mssql-providers-command-schema-v0.1.sql:/usr/src/app/providers-command-schema.sql
-    working_dir: /usr/src/app
-    command: sh -c ' chmod +x /usr/src/app/entrypoint.sh; /usr/src/app/entrypoint.sh & /opt/mssql/bin/sqlservr;'
+      - ./scripts/campaigns/command/mysql-campaigns-command-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-campaigns-command-schema-v0.1.sql
+      - data_campaigns_command:/var/lib/mysql
     networks:
       - ntw_databases
+      #- ntw_logging
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 180M
+  db_campaigns_query:    
+    image: mysql:5.7.31    
+    container_name: db_campaigns_query
+    hostname: db_campaigns_query
+    restart: always
+    #logging: *logging
+    environment:
+      MYSQL_ROOT_PASSWORD: 'mysql'
+      MYSQL_DATABASE: 'campaignsquerydb'
+      MYSQL_USER: 'campaign'
+      MYSQL_PASSWORD: 'campaign2020++'
+      MYSQL_ROOT_HOST: '%'
+    command:
+        - mysqld
+        - --default_storage_engine=InnoDB
+        - --character-set-server=utf8
+        - --init-connect=SET NAMES utf8
+        - --innodb_log_file_size=256M
+        - --max_allowed_packet=20M
+        - --bulk_insert_buffer_size=20M
+        - --query_cache_size=50M
+        - --query_cache_type=1
+        - --query_cache_limit=256k
+        - --skip-character-set-client-handshake
+        - --skip-host-cache
+        - --wait_timeout=600
+    ports:
+      - 3307:3306
+    volumes:
+      - ./scripts/campaigns/query/mysql-campaigns-query-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-campaigns-query-schema-v0.1.sql
+      - data_campaigns_query:/var/lib/mysql
+    networks:
+      - ntw_databases
+      #- ntw_logging
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 180M
+#  db_provider_command:
+    #image: mcr.microsoft.com/mssql/server:2019-CU8-ubuntu-16.04
+#    image: mcr.microsoft.com/mssql/server:2017-CU21-ubuntu-16.04
+    #build: ./mssql
+#    container_name: db_provider_command
+#    hostname: db_provider_command
+#    restart: always
+    #logging: *logging
+#    environment:
+#      SA_PASSWORD: "provider2020++"
+#      ACCEPT_EULA: "Y"
+#      MSSQL_AGENT_ENABLED: "true"
+#    ports:
+#      - 1433:1433
+#    volumes:
+#      - data_sql_cmd_system:/var/opt/mssql/
+#      - data_sql_cmd_data:/var/opt/sqlserver/data
+#      - data_sql_cmd_log:/var/opt/sqlserver/log
+#      - data_sql_cmd_backup:/var/opt/sqlserver/backup
+#      - ./mssql/entrypoint.sh:/usr/src/app/entrypoint.sh
+#      - ./scripts/providers/command/mssql-providers-command-schema-v0.1.sql:/usr/src/app/providers-command-schema.sql
+#    working_dir: /usr/src/app
+#    command: sh -c ' chmod +x /usr/src/app/entrypoint.sh; /usr/src/app/entrypoint.sh & /opt/mssql/bin/sqlservr;'
+#    networks:
+#      - ntw_databases
       #- ntw_logging
     #deploy:
     #  resources:
     #    limits:
     #      cpus: '0.50'
     #      memory: 180M
+  db_order_command:    
+    image: mysql:5.7.31    
+    container_name: db_order_command
+    hostname: db_order_command
+    restart: always
+    #logging: *logging
+    environment:
+      MYSQL_ROOT_PASSWORD: 'mysql'
+      MYSQL_DATABASE: 'ordercommanddb'
+      MYSQL_USER: 'orders'
+      MYSQL_PASSWORD: 'orders2020++'
+      MYSQL_ROOT_HOST: '%'
+    ports:
+      - 3301:3306
+    volumes:
+      - ./scripts/order/command/mysql-orders-command-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-orders-command-schema-v0.1.sql
+      - data_order_command:/var/lib/mysql
+    networks:
+      - ntw_databases
+      #- ntw_logging
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 180M
+  db_order_query:    
+    image: mysql:5.7.31    
+    container_name: db_order_query
+    hostname: db_order_query
+    restart: always
+    #logging: *logging
+    environment:
+      MYSQL_ROOT_PASSWORD: 'mysql'
+      MYSQL_DATABASE: 'orderquerydb'
+      MYSQL_USER: 'orders'
+      MYSQL_PASSWORD: 'orders2020++'
+      MYSQL_ROOT_HOST: '%'
+    command:
+        - mysqld
+        - --default_storage_engine=InnoDB
+        - --character-set-server=utf8
+        - --init-connect=SET NAMES utf8
+        - --innodb_log_file_size=256M
+        - --max_allowed_packet=20M
+        - --bulk_insert_buffer_size=20M
+        - --query_cache_size=50M
+        - --query_cache_type=1
+        - --query_cache_limit=256k
+        - --skip-character-set-client-handshake
+        - --skip-host-cache
+        - --wait_timeout=600
+    ports:
+      - 3302:3306
+    volumes:
+      - ./scripts/orders/query/mysql-orders-query-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-orders-query-schema-v0.1.sql
+      - data_order_query:/var/lib/mysql
+    networks:
+      - ntw_databases
+      #- ntw_logging
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 180M
 volumes:
   data_security:
   data_product_command:
   data_product_query:
   data_images_command:
   data_images_query:
+  data_campaigns_command:
+  data_campaigns_query:
+  data_order_command:
+  data_order_query:
   data_sql_cmd_system:
   data_sql_cmd_data:
   data_sql_cmd_log:
