@@ -1,0 +1,36 @@
+# -------------------------------------------------------------------
+# - DOCKER COMPOSE FILE
+# - AUTOR: Equipo 5
+# - FECHA: 03-Octubre-2020
+# - DESCRIPCION: Docker compose file que permite la
+# -              creacion del contenedor con el servidor ftp
+# -------------------------------------------------------------------
+
+version: '3.7'
+
+services:
+  server_ftp:
+    image: fauria/vsftpd
+    container_name: server_ftp
+    hostname: server_ftp
+    restart: always
+    environment:
+      FTP_USER: toures
+      FTP_PASS: T0u3r3sBal0n
+      FTP_USER_HOME: /home/ftp
+      PASV_ADDRESS: server_ftp 
+      PASV_MIN_PORT: 21100
+      PASV_MAX_PORT: 21110
+    ports:
+      - 0.0.0.0:21:21
+      - 21100-21110:21100-21110 
+    expose:
+        - 21
+    volumes:
+      - ./files/bolivariano.csv:/home/ftp/files/bolivariano.csv
+    networks:
+        - ntw_backend
+      
+networks:
+  ntw_backend:
+    external: true      
