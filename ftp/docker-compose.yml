@@ -17,8 +17,8 @@ services:
     environment:
       FTP_USER: toures
       FTP_PASS: T0u3r3sBal0n
-      FTP_USER_HOME: /home/ftp
-      PASV_ADDRESS: server_ftp 
+      FTP_USER_HOME: /home/vsftpd/toures
+      PASV_ADDRESS: "127.0.0.1"
       PASV_MIN_PORT: 21100
       PASV_MAX_PORT: 21110
     ports:
@@ -27,7 +27,8 @@ services:
     expose:
         - 21
     volumes:
-      - ./files/bolivariano.csv:/home/ftp/files/bolivariano.csv
+      - ./files/vsftpd.conf:/etc/vsftpd/vsftpd.conf
+      - ./files/bolivariano.csv:/home/vsftpd/toures/bolivariano.csv
     networks:
         - ntw_backend
       
