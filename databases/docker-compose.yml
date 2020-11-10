@@ -70,8 +70,8 @@ services:
       MYSQL_DATABASE: 'productquerydb'
       MYSQL_USER: 'product'
       MYSQL_PASSWORD: 'product2020++'
-      MYSQL_ROOT_HOST: '%'
-    command:
+      MYSQL_ROOT_HOST: 'localhost'
+    command: 
         - mysqld
         - --default_storage_engine=InnoDB
         - --character-set-server=utf8
@@ -85,6 +85,8 @@ services:
         - --skip-character-set-client-handshake
         - --skip-host-cache
         - --wait_timeout=600
+        - --innodb_ft_min_token_size=1
+        - --ft_min_word_len=1
     ports:
       - 3302:3306
     volumes:
@@ -149,6 +151,8 @@ services:
         - --skip-character-set-client-handshake
         - --skip-host-cache
         - --wait_timeout=600
+        - --innodb_ft_min_token_size=1
+        - --ft_min_word_len=1
     ports:
       - 3304:3306
     volumes:
@@ -213,6 +217,8 @@ services:
         - --skip-character-set-client-handshake
         - --skip-host-cache
         - --wait_timeout=600
+        - --innodb_ft_min_token_size=1       
+        - --ft_min_word_len=1
     ports:
       - 3307:3306
     volumes:
@@ -308,6 +314,8 @@ services:
         - --skip-character-set-client-handshake
         - --skip-host-cache
         - --wait_timeout=600
+        - --innodb_ft_min_token_size=1
+        - --ft_min_word_len=1
     ports:
       - 3309:3306
     volumes:
