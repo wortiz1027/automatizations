@@ -278,7 +278,7 @@ services:
     ports:
       - 3308:3306
     volumes:
-      - ./scripts/order/command/mysql-orders-command-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-orders-command-schema-v0.1.sql
+      - ./scripts/orders/command/mysql-orders-command-schema-v0.1.sql:/docker-entrypoint-initdb.d/mysql-orders-command-schema-v0.1.sql
       - data_order_command:/var/lib/mysql
     networks:
       - ntw_databases
