@@ -140,6 +140,36 @@ https://dbafromthecold.com/2020/07/17/sql-server-and-docker-compose/
 https://cardano.github.io/blog/2017/11/15/mssql-docker-container
 
 +----------------------------------
+| .NET CORE CREATE PROJECTS
++----------------------------------
+https://medium.com/@gauravyeole/create-asp-net-core-web-api-project-in-visual-studio-code-vs-code-part-1-8fcbc5ea6112
+http://dominiotic.com/serie-desarrolla-tu-primer-api-rest-en-asp-net-corecrea-tu-primer-api/
+https://dominiotic.com/serie-desarrolla-tu-primer-api-rest-en-asp-net-coreparte-final/
+https://www.skylinetechnologies.com/Blog/Skyline-Blog/February_2018/how-to-use-dot-net-core-cli-create-multi-project
+http://codebuckets.com/2017/11/20/multiple-projects-with-net-core-and-visual-studio-code/
+https://secretgeek.net/dotnet_run
+https://medium.com/@IngRengifo/nuestra-primera-web-api-con-net-core-675808105d61
+
++-------------------------------------
+| .NET CORE COMMANDS CREATE PROJECTS
++-------------------------------------
+1 dotnet new sln -o Query-Services
+2 dotnet new classlib -o Core
+3 dotnet new classlib -o Infraestructure
+4 dotnet new classlib -o Shared
+5 dotnet new webapi -o Api
+6 dotnet sln Query-Services.sln add .\Api\Api.csproj .\Core\Core.csproj .\Infraestructure\Infraestructure.csproj .\Shared\Shared.csproj
+7 dotnet add .\Api\Api.csproj reference .\Core\Core.csproj .\Infraestructure\Infraestructure.csproj
+8 dotnet add .\Core\Core.csproj reference .\Shared\Shared.csproj
+9 dotnet add .\Infraestructure\Infraestructure.csproj reference .\Core\Core.csproj .\Shared\Shared.csproj
+
+dotnet restore
+dotnet build
+dotnet build -p <Proyecto>
+dotnet run
+dotnet run -p <Proyecto>
+
++----------------------------------
 | .NET CORE API CRUD SQL SERVER
 +----------------------------------
 https://medium.com/@emekadc/how-to-implement-one-to-one-one-to-many-and-many-to-many-relationships-when-designing-a-database-9da2de684710
@@ -152,6 +182,17 @@ https://www.google.com/search?sxsrf=ALeKk00W2oSCRs9vpWsjXRSdjBkodQDXag%3A1603198
 https://www.syncfusion.com/blogs/post/build-crud-application-with-asp-net-core-entity-framework-visual-studio-2019.aspx
 https://www.syncfusion.com/blogs/post/how-to-build-crud-rest-apis-with-asp-net-core-3-1-and-entity-framework-core-create-jwt-tokens-and-secure-apis.aspx
 https://www.luisbeltran.mx/2018/10/08/creando-un-webapi-con-asp-net-core-entity-framework-core-automapper-y-publicacion-en-iis/
+
++----------------------------------
+| .NET CORE STEELTOE SPRING CLOUD
++----------------------------------
+https://seroter.com/2017/03/27/yes-you-can-use-a-single-service-registry-for-net-and-java-microservices/
+https://github.com/rwwilden/steeltoe-demo-worldfetch/blob/master/appsettings.Development.json
+https://www.altoros.com/blog/enabling-dotnet-core-microservices-with-steeltoe-and-pivotal-cloud-foundry/
+https://github.com/SteeltoeOSS/InitializrApi
+https://testautomation.org/registering-a-dotnet-core-microservice-in-eureka-service-discovery-running-on-a-docker-container/
+https://altkomsoftware.pl/en/blog/service-discovery-eureka/
+https://docs.steeltoe.io/api/v2/discovery/initialize-discovery-client.html
 
 +----------------------------------
 | PAGINACION BASE DE DATOS
@@ -172,6 +213,18 @@ https://www.callicoder.com/spring-boot-actuator/
 https://www.callicoder.com/spring-boot-actuator-metrics-monitoring-dashboard-prometheus-grafana/
 https://stackabuse.com/monitoring-spring-boot-apps-with-micrometer-prometheus-and-grafana/
 https://medium.com/@gopalkrushnapattanaik/monitoring-spring-boot-services-using-micrometer-prometheus-grafana-30106774372d
+
++----------------------------------
+| MySQL FULLTEXTSEARCH
++----------------------------------
+https://www.mysqltutorial.org/mysql-boolean-text-searches.aspx/
+http://www.hackingwithphp.com/9/3/18/advanced-text-searching-using-full-text-indexes
+
++----------------------------------
+| ACTUATOR + PROMETHEUS + GRAFANA
++----------------------------------
+https://stackabuse.com/monitoring-spring-boot-apps-with-micrometer-prometheus-and-grafana/
+https://www.mokkapps.de/blog/monitoring-spring-boot-application-with-micrometer-prometheus-and-grafana-using-custom-metrics/
 
 --------------------------------------------------------------------
 

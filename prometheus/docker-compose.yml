@@ -1,0 +1,27 @@
+# -------------------------------------------------------------------
+# - DOCKER COMPOSE FILE
+# - AUTOR: Equipo 5
+# - FECHA: 03-Octubre-2020
+# - DESCRIPCION: Docker compose file que permite la
+# -              creacion de 2 contendores uno para la aplicacion
+# -              y otro para la base de datos de la app de seguridad
+# -------------------------------------------------------------------
+
+version: '3.7'
+
+services:
+  server_prometheus:
+    image: prom/prometheus
+    container_name: server_prometheus
+    hostname: server_prometheus
+    restart: always
+    ports:
+      - 9000:9090
+    volumes:
+      - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
+    networks:
+      - ntw_databases
+
+networks:
+  ntw_databases:
+    external: true      

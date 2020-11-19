@@ -1,0 +1,35 @@
+aa-query-services
+	http://localhost:8085/aa/swagger-ui.html
+	http://localhost:8085/aa/v2/api-docs
+	
+avianca-query-services
+	http://localhost:8086/avianca/swagger-ui.html
+	http://localhost:8086/avianca/v2/api-docs
+	
+cc-query-services
+	http://localhost:8088/bl/swagger-ui.html
+	http://localhost:8088/bl/v2/api-docs
+
+	
+bl-query-services
+	http://localhost:8091/bl/swagger-ui.html
+	http://localhost:8091/bl/v2/api-docs
+	
+dc-query-services
+	http://localhost:8092/dc/swagger-ui.html	
+	http://localhost:8092/dc/v2/api-docs
+
+ht-query-services	
+	http://localhost:8096/ht/swagger-ui.html	
+	http://localhost:8096/ht/v2/api-docs
+
+paywoaint-query-services
+	http://localhost:8097/pay/swagger-ui.html
+	http://localhost:8097/pay/v2/api-docs
+	
+--------------------------------
+
+metricas
+http://localhost:8085/aa/actuator
+http://localhost:8085/aa/actuator/metrics
+http://localhost:8085/aa/actuator/metrics/jvm.memory.used
