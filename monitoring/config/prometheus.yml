@@ -9,30 +9,23 @@ scrape_configs:
         - targets: ['192.168.20.20:6190'] # server-config
         - targets: ['192.168.20.20:6191'] # server-eureka
         - targets: ['192.168.20.20:6192'] # server-gateway
-        - targets: ['192.168.20.20:6150'] # server-security
-        
-        - targets: ['192.168.20.20:'] # image-command-services
-        - targets: ['192.168.20.20:'] # image-query-services
-        
-        - targets: ['192.168.20.20:'] # campaings-command-services
-        - targets: ['192.168.20.20:'] # campaings-query-services
-        
-        - targets: ['192.168.20.20:'] # products-command-services
-        - targets: ['192.168.20.20:'] # products-query-services
-        
-        - targets: ['192.168.20.20:'] # orders-command-services
-        - targets: ['192.168.20.20:'] # orders-query-services
-        
-        #- targets: ['192.168.20.20:'] # providers-command-services
-        #- targets: ['192.168.20.20:'] # providers-query-services
-        
+        - targets: ['192.168.20.20:6150'] # server-security        
+        - targets: ['192.168.20.20:6083'] # image-command-services
+        - targets: ['192.168.20.20:6084'] # image-query-services        
+        - targets: ['192.168.20.20:6087'] # campaings-command-services
+        - targets: ['192.168.20.20:6088'] # campaings-query-services        
+        - targets: ['192.168.20.20:6081'] # products-command-services
+        - targets: ['192.168.20.20:6082'] # products-query-services        
+        - targets: ['192.168.20.20:6089'] # orders-command-services
+        - targets: ['192.168.20.20:6090'] # orders-query-services        
+        - targets: ['192.168.20.20:6094'] # providers-command-services
+        - targets: ['192.168.20.20:6095'] # providers-query-services        
         - targets: ['192.168.20.20:6085'] # aa-query-services
         - targets: ['192.168.20.20:6086'] # avianca-query-services
         - targets: ['192.168.20.20:6091'] # bl-query-services
-        - targets: ['192.168.20.20:6088'] # cc-query-services
+        - targets: ['192.168.20.20:6098'] # cc-query-services
         - targets: ['192.168.20.20:6092'] # dc-query-services
         - targets: ['192.168.20.20:6096'] # ht-query-services
-        - targets: ['192.168.20.20:6097'] # paywoaint-query-services
-        
-        - targets: ['192.168.20.20:6097'] # bpm-command-services
-        - targets: ['192.168.20.20:6097'] # notifications-services
+        - targets: ['192.168.20.20:6097'] # paywoaint-query-services        
+        - targets: ['192.168.20.20:6099'] # bpm-command-services
+        - targets: ['192.168.20.20:6093'] # notifications-services
