@@ -20,8 +20,18 @@ services:
     volumes:
       - ./config/prometheus.yml:/etc/prometheus/prometheus.yml
     networks:
-      - ntw_databases
-
+      - ntw_backend
+  server_grafana:
+    image: grafana/grafana
+    container_name: server_grafana
+    hostname: server_grafana
+    restart: always
+    depends_on:
+      - server_prometheus
+    ports:
+      - 3000:3000    
+    networks:
+      - ntw_backend
 networks:
-  ntw_databases:
+  ntw_backend:
     external: true      

@@ -225,6 +225,10 @@ http://www.hackingwithphp.com/9/3/18/advanced-text-searching-using-full-text-ind
 +----------------------------------
 https://stackabuse.com/monitoring-spring-boot-apps-with-micrometer-prometheus-and-grafana/
 https://www.mokkapps.de/blog/monitoring-spring-boot-application-with-micrometer-prometheus-and-grafana-using-custom-metrics/
+https://stackoverflow.com/questions/32136490/spring-boot-actuator-endpoints-with-set-server-context-path
+https://stackabuse.com/monitoring-with-spring-boot-actuator/
+
+https://grafana.com/grafana/dashboards/4701
 
 --------------------------------------------------------------------
 
