@@ -32,6 +32,20 @@ services:
       - 3000:3000    
     networks:
       - ntw_backend
+  server_portainer:
+    image: portainer/portainer
+    container_name: server_portainer
+    hostname: server_portainer
+    restart: always
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+      - data_portainer:/data
+    ports:
+      - 9001:9000
+    networks:
+      - ntw_backend
+volumes:
+  data_portainer:
 networks:
   ntw_backend:
     external: true      

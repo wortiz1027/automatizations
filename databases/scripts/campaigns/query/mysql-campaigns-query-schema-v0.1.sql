@@ -8,7 +8,7 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 -- -----------------------------------------------------
--- Schema imagesqueryddb
+-- Schema campaignsquerydb
 -- -----------------------------------------------------
 -- Base de datos que permite gestionar la informacion de productos
 DROP SCHEMA IF EXISTS `campaignsquerydb` ;
