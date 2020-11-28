@@ -29,3 +29,5 @@ scrape_configs:
         - targets: ['192.168.20.20:6097'] # paywoaint-query-services        
         - targets: ['192.168.20.20:6099'] # bpm-command-services
         - targets: ['192.168.20.20:6093'] # notifications-services
+        - targets: ['192.168.20.20:6100'] # vendors-command-services
+        - targets: ['192.168.20.20:6101'] # vendors-query-services
