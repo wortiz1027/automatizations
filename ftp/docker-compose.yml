@@ -18,7 +18,7 @@ services:
       FTP_USER: toures
       FTP_PASS: T0u3r3sBal0n
       FTP_USER_HOME: /home/vsftpd/toures
-      PASV_ADDRESS: "127.0.0.1"
+      PASV_ADDRESS: "server_ftp"
       PASV_MIN_PORT: 21100
       PASV_MAX_PORT: 21110
     ports:
