@@ -20,14 +20,14 @@ scrape_configs:
         - targets: ['10.39.1.94:6090'] # orders-query-services        
         - targets: ['10.39.1.94:6094'] # providers-command-services
         - targets: ['10.39.1.94:6095'] # providers-query-services        
-        - targets: ['10.39.1.94:6085'] # aa-query-services
-        - targets: ['10.39.1.94:6086'] # avianca-query-services
-        - targets: ['10.39.1.94:6091'] # bl-query-services
-        - targets: ['10.39.1.94:6098'] # cc-query-services
-        - targets: ['10.39.1.94:6092'] # dc-query-services
-        - targets: ['10.39.1.94:6096'] # ht-query-services
-        - targets: ['10.39.1.94:6097'] # paywoaint-query-services        
-        - targets: ['10.39.1.94:6099'] # bpm-command-services
-        - targets: ['10.39.1.94:6093'] # notifications-services
-        - targets: ['10.39.1.94:6100'] # vendors-command-services
-        - targets: ['10.39.1.94:6101'] # vendors-query-services
+        - targets: ['10.39.1.59:6085'] # aa-query-services
+        - targets: ['10.39.1.59:6086'] # avianca-query-services
+        - targets: ['10.39.1.59:6091'] # bl-query-services
+        - targets: ['10.39.1.59:6098'] # cc-query-services
+        - targets: ['10.39.1.59:6092'] # dc-query-services
+        - targets: ['10.39.1.59:6096'] # ht-query-services
+        - targets: ['10.39.1.59:6097'] # paywoaint-query-services        
+        - targets: ['10.39.1.59:6099'] # bpm-command-services
+        - targets: ['10.39.1.85:6093'] # notifications-services
+        - targets: ['10.39.1.85:6100'] # vendors-command-services
+        - targets: ['10.39.1.85:6101'] # vendors-query-services
